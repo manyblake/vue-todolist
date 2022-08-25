@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/a1b97f2018.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>To Do List</title>
+  </head>
+  <body>
+    <div id="app">
+      <header><h1>Vue To Do List</h1></header>
+
+      <main>
+        <div class="container">
+          <h2>Task Totali</h2>
+          <ul>
+            <li v-for="todo in todos" :class="[todo.done ? 'done' :'','todo']">
+              {{ todo.text }}<i
+                @click="toggleDoneOf(todo)"
+                class="fa-solid fa-x"
+              ></i>
+            </li>
+          </ul>
+        </div>
+
+        <div class="container">
+          <h2>Aggiungi Task</h2>
+          <input @keyup.enter="onEnter" type="text" v-model="newTodo" />
+          <input @click="addTodo" type="button" value="Aggiungi" />
+        </div>
+
+        <div class="container">
+          <h2>Task Completate</h2>
+          <ul>
+            <li v-for="todo in todosDone" class="todo">{{todo.text}}</li>
+          </ul>
+        </div>
+      </main>
+    </div>
+
+    <script src="./js/app.js"></script>
+  </body>
+</html>
